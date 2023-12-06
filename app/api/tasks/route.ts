@@ -91,10 +91,3 @@ export async function PUT(req: Request) {
   }
 }
 
-export async function DELETE(req: Request) {
-  try {
-  } catch (error) {
-    console.log("Error Creating Task: ", error);
-    return NextResponse.json({ error: "Error Deleting Task", status: 500 });
-  }
-}
