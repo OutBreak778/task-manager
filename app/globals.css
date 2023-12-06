@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  height: 100vh;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #27ae60;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: loader 1s linear infinite;
+}
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+input,
+textarea,
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  width: 11rem;
+  height: 1.4rem;
+  cursor: pointer;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  justify-content: center;
+  max-width: 1300px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  user-select: none;
+}
+.checkbox-group & > * {
+  margin: 0.5rem 0.5rem;
+}
+
+.checkbox-input {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 11px;
+}
+
+.checkbox-input &:checked + .checkbox-tile {
+  border-color: #27ae60;
+  box-shadow: 0 5px 10px rgba(#000, 0.1);
+  background: #27ae60;
+  color: #f1f1f1;
+}
+
+.checkbox-input &:checked + .checkbox-tile &:before {
+  transform: scale(1);
+  opacity: 1;
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+
+.checkbox-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 29rem;
+  min-height: 3rem;
+  border-radius: 0.1rem;
+  border: 2px dashed #b5bfd9;
+  background-color: #212121;
+  box-shadow: 0 5px 10px rgba(#000, 0.1);
+  transition: 0.15s ease;
+  cursor: pointer;
+  position: relative;
+  padding: 17px;
+
+  &:hover {
+    border-color: #27ae60;
+    &:before {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+.checkbox-label {
+  color: #f6f6f6;
+  transition: 0.375s ease;
+  text-align: center;
+}
+
+@media screen and (max-width: 750px) {
+  .checkbox-tile {
+    width: 18rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .checkbox-tile {
+    width: 13rem;
+  }
+}
+@media screen and (max-width: 319px) {
+  .checkbox-tile {
+    width: 13rem;
+  }
+}
